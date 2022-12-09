@@ -40,6 +40,54 @@ app.get('/api/1/co2/month', (req, res) => {
   res.json(responseData);
 });
 
+app.get('/api/1/co2/month2', (req, res) => {
+  let responseData = {
+    info: 'CO2 Month data'
+  };
+  switch (req.query.date){
+    case "2022-06": {
+      responseData.result = [
+        {
+          label: '전기',
+          value: 1526718,
+        },
+        {
+          label: '가스',
+          value: 349583,
+        }, {
+          label: '수도',
+          value: 28911,
+        }, {
+          label: '열',
+          value: 19236,
+        }
+      ];
+      break;
+    }
+    case "2022-05": {
+      responseData.result = [
+        {
+          label: '전기',
+          value: 1383872,
+        },
+        {
+          label: '가스',
+          value: 446769,
+        }, {
+          label: '수도',
+          value: 26877,
+        }, {
+          label: '열',
+          value: 26574,
+        }
+      ];
+      break;
+    }
+  }
+
+  res.json(responseData);
+});
+
 app.get('/api/1/co2/history', (req, res) => {
   let responseData = {
     info: 'CO2 History Data',
