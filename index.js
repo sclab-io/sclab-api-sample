@@ -14,7 +14,7 @@ app.get('/api/1/co2/month', (req, res) => {
   let responseData = {
     info: 'CO2 Month data'
   };
-  switch (req.query.date){
+  switch (req.query.data.date){
     case "2022-06": {
       responseData.result = {
         datetime: '2022-06-01 00:00:00',
@@ -34,6 +34,38 @@ app.get('/api/1/co2/month', (req, res) => {
         heat: 26574
       }
       break;
+    }
+  }
+  
+  res.json(responseData);
+});
+
+app.post('/api/1/co2/month', (req, res) => {
+  let responseData = {
+    info: 'CO2 Month data from POST'
+  };
+  if(req.body.data){
+    switch (req.body.data.date){
+      case "2022-06": {
+        responseData.result = {
+          datetime: '2022-06-01 00:00:00',
+          electricity: 1526718,
+          gas: 349583,
+          water: 28911,
+          heat: 19236
+        }
+        break;
+      }
+      case "2022-05": {
+        responseData.result = {
+          datetime: '2022-05-01 00:00:00',
+          electricity: 1383872,
+          gas: 446769,
+          water: 26877,
+          heat: 26574
+        }
+        break;
+      }
     }
   }
   
