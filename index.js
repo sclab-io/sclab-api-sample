@@ -14,7 +14,7 @@ app.get('/api/1/co2/month', (req, res) => {
   let responseData = {
     info: 'CO2 Month data'
   };
-  switch (req.query.data.date){
+  switch (req.query.date){
     case "2022-06": {
       responseData.result = {
         datetime: '2022-06-01 00:00:00',
