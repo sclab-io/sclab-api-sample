@@ -501,6 +501,25 @@ app.get('/api/1/co2/energy', (req, res) => {
   res.json(responseData);
 });
 
+app.get('/api/1/location', (req, res) => {
+  let responseData = {
+    info: 'Location data'
+  };
+
+  if(req.query.lat && req.query.lng){
+    responseData.result = [];
+    let count = Math.ceil(Math.random() * 10);
+    for(let i = 0; i < count; i++){
+      responseData.result.push({
+        lat: parseFloat(req.query.lat) + (Math.random() * 0.01 - 0.005),
+        lng: parseFloat(req.query.lng) + (Math.random() * 0.01 - 0.005),
+        value: Math.random() * 100
+      });
+    }
+  }
+  res.json(responseData);
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
